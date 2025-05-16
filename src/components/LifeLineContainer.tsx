@@ -5,7 +5,9 @@ type LifeLineContainerProps = {
 const LifeLineContainer = ({ title }: LifeLineContainerProps) => {
   return (
     <div className="flex flex-col items-center">
-      <h1 className="mb-10 text-3xl">{title && title}</h1>
+      <h1 style={{ color: "var(--main-texts)" }} className="mb-10 text-3xl">
+        {title && title}
+      </h1>
       <LifeLine></LifeLine>
     </div>
   );

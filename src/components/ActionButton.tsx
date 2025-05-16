@@ -10,11 +10,17 @@ const ActionButton = ({
   textSize,
 }: ActionButtonProps) => {
   return (
-    <div>
-      <button className={buttonStyle}>
-        <h1 className={textSize}>{description}</h1>
-      </button>
-    </div>
+    <button
+      style={{ backgroundColor: "var(--secondary-backgrounds-text" }}
+      className={buttonStyle}
+    >
+      <h1
+        style={{ color: "var(--lighter-secondary-backgrounds)" }}
+        className={textSize}
+      >
+        {description}
+      </h1>
+    </button>
   );
 };
 
