@@ -11,7 +11,7 @@ const ActionButton = ({
   verticalPadding,
   textSize,
 }: ActionButtonProps) => {
-  const stylingButton = `border-1 rounded-lg pt-${verticalPadding} pb-${verticalPadding} pl-${lateralPadding} pr-${lateralPadding}`;
+  const stylingButton = `border-1 rounded-2xl pt-${verticalPadding} pb-${verticalPadding} pl-${lateralPadding} pr-${lateralPadding}`;
   const descriptionSize = `text-${textSize}`;
   return (
     <div>
