@@ -1,12 +1,17 @@
 import type { DayType } from "../types/DayType";
 import Star from "./svg/Star";
+import { useNavigate } from "@tanstack/react-router";
 const Day = ({ date, creating, id, description, score }: DayType) => {
+  const navigate = useNavigate();
   const calculateBgColor = () => {
     if (score === 10) return "gold";
     if (score > 5) return "lightGreen";
     if (score > 2) return "coral";
     if (score <= 2) return "darkgray";
   };
+  function goToHome() {
+    navigate({ to: "/" });
+  }
   return (
     <>
       <div
@@ -20,10 +25,9 @@ const Day = ({ date, creating, id, description, score }: DayType) => {
           style={{ backgroundColor: calculateBgColor() }}
         >
           <h1 className="m-4">{date}</h1>
-          <textarea
-            className="bg-white ml-2 mr-2 rounded-xl text-center h-[40vh]"
-            value={description}
-          ></textarea>
+          <textarea className="bg-white ml-2 mr-2 rounded-xl text-center h-[40vh]">
+            {description}
+          </textarea>
           <div className="m-5 flex justify-center">
             <div className=" bg-amber-200 p-2 flex items-center rounded-2xl">
               <Star width={32} height={32}></Star>
@@ -32,7 +36,9 @@ const Day = ({ date, creating, id, description, score }: DayType) => {
           </div>
         </div>
 
-        <div className="text-white text-2xl">X</div>
+        <div className="text-white text-2xl" onClick={goToHome}>
+          X
+        </div>
       </div>
     </>
   );
