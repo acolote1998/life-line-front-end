@@ -1,11 +1,18 @@
 type ActionButtonProps = {
   description: string;
+  lateralPadding: string;
+  verticalPadding: string;
 };
 
-const ActionButton = ({ description }: ActionButtonProps) => {
+const ActionButton = ({
+  description,
+  lateralPadding,
+  verticalPadding,
+}: ActionButtonProps) => {
+  const styling = `border-1 rounded-lg pt-${verticalPadding} pb-${verticalPadding} pl-${lateralPadding} pr-${lateralPadding}`;
   return (
     <div>
-      <button className="border-1 rounded-lg pt-2.5 pb-2.5 pl-12 pr-12">
+      <button className={styling}>
         <h1 className="text-5xl">{description}</h1>
       </button>
     </div>
