@@ -7,6 +7,8 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <LifeLineContainer title="How did you feel today?"></LifeLineContainer>
+    <>
+      <LifeLineContainer title="How did you feel today?"></LifeLineContainer>
+    </>
   );
 }

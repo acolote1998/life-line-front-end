@@ -1,5 +1,37 @@
+import LifeLineSphere from "./LifeLineSphere";
 const LifeLine = () => {
-  const items = [".", ".", ".", ".", "."];
+  const items = [
+    {
+      id: 0,
+      description: "A nice day",
+      date: "2025/03/18",
+      score: 1,
+    },
+    {
+      id: 1,
+      description: "A nice day",
+      date: "2025/03/18",
+      score: 9,
+    },
+    {
+      id: 2,
+      description: "A nice day",
+      date: "2025/03/18",
+      score: 3,
+    },
+    {
+      id: 3,
+      description: "A nice day",
+      date: "2025/03/18",
+      score: 7,
+    },
+    {
+      id: 4,
+      description: "A nice day",
+      date: "2025/03/18",
+      score: 10,
+    },
+  ];
   const gapPx = 50;
   const total = items.length;
 
@@ -10,16 +42,15 @@ const LifeLine = () => {
         // La última X va en el centro, las demás a la izquierda con distancia fija
         const offset = (total - 1 - idx) * gapPx;
         return (
-          <p
+          <LifeLineSphere
             key={idx}
-            className="absolute top-1/2 bg-amber-200 px-4 py-1 rounded-full"
+            score={item.score}
+            className="absolute top-1/2 px-4 py-1"
             style={{
               left: `calc(50% - ${offset}px)`,
               transform: "translate(-50%, -50%)",
             }}
-          >
-            {item}
-          </p>
+          />
         );
       })}
     </div>
