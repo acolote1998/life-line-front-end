@@ -1,6 +1,6 @@
 import LifeLineSphere from "./LifeLineSphere";
 const LifeLine = () => {
-  const items = [
+  const fetchedItems = [
     {
       id: 0,
       description: "A nice day",
@@ -32,13 +32,17 @@ const LifeLine = () => {
       score: 10,
     },
   ];
+  const actualItems = [
+    ...fetchedItems,
+    { id: undefined, description: "", date: "", score: undefined },
+  ];
   const gapPx = 50;
-  const total = items.length;
+  const total = actualItems.length;
 
   return (
     <div className="relative flex flex-col justify-center rounded-4xl w-[90vw] h-[20vh] bg-gray-300 border border-gray-400 overflow-hidden">
       <hr className="absolute top-1/2 left-0 w-full border-t-4 border-gray-500 -translate-y-1/2" />
-      {items.map((item, idx) => {
+      {actualItems.map((item, idx) => {
         // La última X va en el centro, las demás a la izquierda con distancia fija
         const offset = (total - 1 - idx) * gapPx;
         return (

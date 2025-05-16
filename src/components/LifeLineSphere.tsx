@@ -18,7 +18,7 @@ const LifeLineSphere = ({
       if (score > 2) return <RedSphere width={24} height={24} />;
       if (score <= 2) return <DarkSphere width={24} height={24} />;
     } else {
-      return <BlueSphere width={32} height={32} />;
+      return <BlueSphere width={40} height={40} />;
     }
   };
   return (
