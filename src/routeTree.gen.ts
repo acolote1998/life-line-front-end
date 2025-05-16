@@ -12,12 +12,19 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as DaysDayIdImport } from './routes/days/$dayId'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DaysDayIdRoute = DaysDayIdImport.update({
+  id: '/days/$dayId',
+  path: '/days/$dayId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -32,6 +39,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/days/$dayId': {
+      id: '/days/$dayId'
+      path: '/days/$dayId'
+      fullPath: '/days/$dayId'
+      preLoaderRoute: typeof DaysDayIdImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +53,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/days/$dayId': typeof DaysDayIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/days/$dayId': typeof DaysDayIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/days/$dayId': typeof DaysDayIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/days/$dayId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/days/$dayId'
+  id: '__root__' | '/' | '/days/$dayId'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DaysDayIdRoute: typeof DaysDayIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DaysDayIdRoute: DaysDayIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +96,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/days/$dayId"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/days/$dayId": {
+      "filePath": "days/$dayId.tsx"
     }
   }
 }
