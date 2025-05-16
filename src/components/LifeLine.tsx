@@ -36,7 +36,7 @@ const LifeLine = () => {
     ...fetchedItems,
     { id: undefined, description: "", date: "", score: undefined },
   ];
-  const gapPx = 50;
+  const gapPx = 40;
   const total = actualItems.length;
 
   return (
