@@ -1,0 +1,14 @@
+body {
+  background-color: var(--site-bg);
+  font-family: "Quicksand", sans-serif;
+}
+
+:root {
+  --site-bg: #f7fdfc;
+  --main-divs: #d2f5e3;
+  --secondary-divs: #b2e7d2;
+  --main-texts: #205e4c;
+  --lighter-secondary-backgrounds: #e9fdf7;
+  --secondary-backgrounds-text: #2d7a65;
+  --lighter-secondary-backgrounds-text: #4d9e86;
+}
