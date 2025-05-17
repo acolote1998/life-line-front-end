@@ -28,6 +28,7 @@ const DayListItem = ({ id, date, score }: DayType) => {
         <p>{date}</p>
         {calculateSphere()}
         <Star width={20} height={20} />
+        <p>{score} / 10</p>
       </div>
     </li>
   );
