@@ -28,9 +28,8 @@ const Day = ({ date, readOnly, description, score }: DayType) => {
           <textarea
             readOnly={readOnly}
             className="bg-white ml-2 mr-2 rounded-xl text-center h-[40vh]"
-          >
-            {description}
-          </textarea>
+            value={description}
+          ></textarea>
           <div className="m-5 flex justify-center">
             <div className=" bg-amber-200 p-2 flex items-center rounded-2xl">
               <Star width={32} height={32}></Star>
