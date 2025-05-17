@@ -1,10 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
+import useDays from "../../hooks/useDays";
+import type { DayType } from "../../types/DayType";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/days/")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const [days, setDays] = useState<DayType[]>([]);
+  const { data } = useDays();
+  useEffect(() => {
+    if (data) setDays(data);
+    console.log(data);
+  }, [data]);
   return (
     <div
       className="flex flex-col items-center self-center justify-center w-[90vw] h-[60vh] p-3 gap-6 border-2 rounded-xl"
