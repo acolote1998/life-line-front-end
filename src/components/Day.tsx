@@ -9,7 +9,7 @@ const Day = ({ date, readOnly, description, score }: DayType) => {
     if (score > 2) return "coral";
     if (score <= 2) return "darkgray";
   };
-  function goToHome() {
+  function goToDays() {
     navigate({ to: "/days" });
   }
   return (
@@ -39,7 +39,7 @@ const Day = ({ date, readOnly, description, score }: DayType) => {
           </div>
         </div>
 
-        <div className="text-white text-2xl" onClick={goToHome}>
+        <div className="text-white text-2xl" onClick={goToDays}>
           X
         </div>
       </div>
