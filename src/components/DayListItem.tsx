@@ -1,3 +1,4 @@
+import { useNavigate } from "@tanstack/react-router";
 import type { DayType } from "../types/DayType";
 import DarkSphere from "./spheres/DarkSphere";
 import GoldenSphere from "./spheres/GoldenSphere";
@@ -6,6 +7,7 @@ import RedSphere from "./spheres/RedSphere";
 import Star from "./svg/Star";
 
 const DayListItem = ({ id, date, score }: DayType) => {
+  const navigate = useNavigate();
   const calculateSphere = () => {
     if (score) {
       if (score === 10) return <GoldenSphere width={24} height={24} />;
@@ -16,8 +18,12 @@ const DayListItem = ({ id, date, score }: DayType) => {
     return null;
   };
 
+  const handleClick = () => {
+    navigate({ to: "/days/" + id });
+  };
+
   return (
-    <li className="m-1" id={id.toString()}>
+    <li className="m-1" id={id.toString()} onClick={handleClick}>
       <div className="flex flex-row justify-between align-middle items-center gap-10">
         <p>{date}</p>
         {calculateSphere()}
