@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Day from "../../components/Day";
+import useDayById from "../../hooks/useDayById";
 
 export const Route = createFileRoute("/days/$dayId")({
   component: RouteComponent,
@@ -7,14 +8,15 @@ export const Route = createFileRoute("/days/$dayId")({
 
 function RouteComponent() {
   const { dayId } = Route.useParams();
+  const { data } = useDayById(Number(dayId));
   return (
     <Day
-      date="2025/03/18"
-      readOnly={true}
-      description="A nice day"
-      id={Number(dayId)}
-      score={9}
-      key={dayId}
+      date={data?.date}
+      readOnly={data?.readOnly}
+      description={data?.description}
+      id={data?.id}
+      score={data?.score}
+      key={data?.id}
     ></Day>
   );
 }

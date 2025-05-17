@@ -3,7 +3,7 @@ import axios, { HttpStatusCode } from "axios";
 
 const useDayById = (id: number) => {
   async function fetchDayById() {
-    const response = await axios.get(`days/${id}.json`);
+    const response = await axios.get(`/days/${id}.json`);
     if (response.status === HttpStatusCode.Ok) {
       return response.data;
     }

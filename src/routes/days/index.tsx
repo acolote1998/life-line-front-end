@@ -13,7 +13,6 @@ function RouteComponent() {
   const { data } = useDays();
   useEffect(() => {
     if (data) setDays(data);
-    console.log(data);
   }, [data]);
   return (
     <div
