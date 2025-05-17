@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as DaysIndexImport } from './routes/days/index'
+import { Route as DaysCreateImport } from './routes/days/create'
 import { Route as DaysDayIdImport } from './routes/days/$dayId'
 
 // Create/Update Routes
@@ -26,6 +27,12 @@ const IndexRoute = IndexImport.update({
 const DaysIndexRoute = DaysIndexImport.update({
   id: '/days/',
   path: '/days/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DaysCreateRoute = DaysCreateImport.update({
+  id: '/days/create',
+  path: '/days/create',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -53,6 +60,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DaysDayIdImport
       parentRoute: typeof rootRoute
     }
+    '/days/create': {
+      id: '/days/create'
+      path: '/days/create'
+      fullPath: '/days/create'
+      preLoaderRoute: typeof DaysCreateImport
+      parentRoute: typeof rootRoute
+    }
     '/days/': {
       id: '/days/'
       path: '/days'
@@ -68,12 +82,14 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/days/$dayId': typeof DaysDayIdRoute
+  '/days/create': typeof DaysCreateRoute
   '/days': typeof DaysIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/days/$dayId': typeof DaysDayIdRoute
+  '/days/create': typeof DaysCreateRoute
   '/days': typeof DaysIndexRoute
 }
 
@@ -81,27 +97,30 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/days/$dayId': typeof DaysDayIdRoute
+  '/days/create': typeof DaysCreateRoute
   '/days/': typeof DaysIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/days/$dayId' | '/days'
+  fullPaths: '/' | '/days/$dayId' | '/days/create' | '/days'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/days/$dayId' | '/days'
-  id: '__root__' | '/' | '/days/$dayId' | '/days/'
+  to: '/' | '/days/$dayId' | '/days/create' | '/days'
+  id: '__root__' | '/' | '/days/$dayId' | '/days/create' | '/days/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DaysDayIdRoute: typeof DaysDayIdRoute
+  DaysCreateRoute: typeof DaysCreateRoute
   DaysIndexRoute: typeof DaysIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DaysDayIdRoute: DaysDayIdRoute,
+  DaysCreateRoute: DaysCreateRoute,
   DaysIndexRoute: DaysIndexRoute,
 }
 
@@ -117,6 +136,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/days/$dayId",
+        "/days/create",
         "/days/"
       ]
     },
@@ -125,6 +145,9 @@ export const routeTree = rootRoute
     },
     "/days/$dayId": {
       "filePath": "days/$dayId.tsx"
+    },
+    "/days/create": {
+      "filePath": "days/create.tsx"
     },
     "/days/": {
       "filePath": "days/index.tsx"

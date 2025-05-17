@@ -14,7 +14,7 @@ const LifeLine = () => {
 
   const handleClick = (id: number) => {
     if (id === undefined) {
-      navigate({ to: `/create` });
+      navigate({ to: `/days/create` });
       return;
     }
     navigate({ to: `/days/${id}` });

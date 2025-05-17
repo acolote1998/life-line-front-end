@@ -32,7 +32,7 @@ const ButtonsContainer = () => {
         </div>
         <div
           onClick={() => {
-            navigate({ to: "/create" });
+            navigate({ to: "/days/create" });
           }}
         >
           <ActionButton

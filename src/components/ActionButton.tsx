@@ -1,7 +1,7 @@
 type ActionButtonProps = {
   description: string;
-  buttonStyle: string;
-  textSize: string;
+  buttonStyle?: string;
+  textSize?: string;
 };
 
 const ActionButton = ({
