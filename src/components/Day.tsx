@@ -10,7 +10,7 @@ const Day = ({ date, readOnly, description, score }: DayType) => {
     if (score <= 2) return "darkgray";
   };
   function goToHome() {
-    navigate({ to: "/" });
+    navigate({ to: "/days" });
   }
   return (
     <>
