@@ -1,41 +1,14 @@
+import { useNavigate } from "@tanstack/react-router";
 import LifeLineSphere from "./LifeLineSphere";
+import useDays from "../hooks/useDays";
 const LifeLine = () => {
-  const fetchedItems = [
-    {
-      id: 0,
-      description: "A nice day",
-      date: "2025/03/18",
-      score: 1,
-    },
-    {
-      id: 1,
-      description: "A nice day",
-      date: "2025/03/18",
-      score: 9,
-    },
-    {
-      id: 2,
-      description: "A nice day",
-      date: "2025/03/18",
-      score: 3,
-    },
-    {
-      id: 3,
-      description: "A nice day",
-      date: "2025/03/18",
-      score: 7,
-    },
-    {
-      id: 4,
-      description: "A nice day",
-      date: "2025/03/18",
-      score: 10,
-    },
-  ];
+  const { data = [] } = useDays();
   const actualItems = [
-    ...fetchedItems,
+    ...data,
     { id: undefined, description: "", date: "", score: undefined },
   ];
+
+  const navigate = useNavigate();
   const gapPx = 40;
   const total = actualItems.length;
 
@@ -46,15 +19,21 @@ const LifeLine = () => {
         // La última X va en el centro, las demás a la izquierda con distancia fija
         const offset = (total - 1 - idx) * gapPx;
         return (
-          <LifeLineSphere
+          <div
             key={idx}
-            score={item.score}
-            className="absolute top-1/2 px-4 py-1"
-            style={{
-              left: `calc(50% - ${offset}px)`,
-              transform: "translate(-50%, -50%)",
+            onClick={() => {
+              navigate({ to: `/days/${item.id}` });
             }}
-          />
+          >
+            <LifeLineSphere
+              score={item.score}
+              className="absolute top-1/2 px-4 py-1"
+              style={{
+                left: `calc(50% - ${offset}px)`,
+                transform: "translate(-50%, -50%)",
+              }}
+            />
+          </div>
         );
       })}
     </div>
