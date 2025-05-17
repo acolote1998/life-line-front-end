@@ -1,0 +1,79 @@
+[
+  {
+    "id": 0,
+    "readOnly": true,
+    "description": "A beautiful day in Puerto Madryn with my love",
+    "score": 10,
+    "date": "2025/10/22"
+  },
+  {
+    "id": 1,
+    "readOnly": true,
+    "description": "Had coffee with friends at the park",
+    "score": 8,
+    "date": "2025/10/21"
+  },
+  {
+    "id": 2,
+    "readOnly": true,
+    "description": "Watched a great movie at home",
+    "score": 7,
+    "date": "2025/10/20"
+  },
+  {
+    "id": 3,
+    "readOnly": true,
+    "description": "Went for a long walk by the river",
+    "score": 6,
+    "date": "2025/10/19"
+  },
+  {
+    "id": 4,
+    "readOnly": true,
+    "description": "Cooked a new recipe and it turned out well",
+    "score": 9,
+    "date": "2025/10/18"
+  },
+  {
+    "id": 5,
+    "readOnly": true,
+    "description": "Read a good book in the afternoon",
+    "score": 7,
+    "date": "2025/10/17"
+  },
+  {
+    "id": 6,
+    "readOnly": true,
+    "description": "Had a relaxing day at home",
+    "score": 5,
+    "date": "2025/10/16"
+  },
+  {
+    "id": 7,
+    "readOnly": true,
+    "description": "Went to the gym and felt energized",
+    "score": 8,
+    "date": "2025/10/15"
+  },
+  {
+    "id": 8,
+    "readOnly": true,
+    "description": "Spent time with family",
+    "score": 10,
+    "date": "2025/10/14"
+  },
+  {
+    "id": 9,
+    "readOnly": true,
+    "description": "Tried painting for the first time",
+    "score": 6,
+    "date": "2025/10/13"
+  },
+  {
+    "id": 10,
+    "readOnly": true,
+    "description": "Helped a neighbor with groceries",
+    "score": 9,
+    "date": "2025/10/12"
+  }
+]
