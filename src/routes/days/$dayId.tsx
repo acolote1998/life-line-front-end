@@ -10,7 +10,7 @@ function RouteComponent() {
   return (
     <Day
       date="2025/03/18"
-      creating={false}
+      readOnly={true}
       description="A nice day"
       id={Number(dayId)}
       score={9}

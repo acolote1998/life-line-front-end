@@ -1,6 +1,6 @@
 export type DayType = {
   id: number;
-  creating: boolean;
+  readOnly: boolean;
   description: string;
   score: number;
   date: string;

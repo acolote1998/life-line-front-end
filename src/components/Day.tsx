@@ -1,7 +1,7 @@
 import type { DayType } from "../types/DayType";
 import Star from "./svg/Star";
 import { useNavigate } from "@tanstack/react-router";
-const Day = ({ date, creating, id, description, score }: DayType) => {
+const Day = ({ date, readOnly, description, score }: DayType) => {
   const navigate = useNavigate();
   const calculateBgColor = () => {
     if (score === 10) return "gold";
@@ -25,7 +25,10 @@ const Day = ({ date, creating, id, description, score }: DayType) => {
           style={{ backgroundColor: calculateBgColor() }}
         >
           <h1 className="m-4">{date}</h1>
-          <textarea className="bg-white ml-2 mr-2 rounded-xl text-center h-[40vh]">
+          <textarea
+            readOnly={readOnly}
+            className="bg-white ml-2 mr-2 rounded-xl text-center h-[40vh]"
+          >
             {description}
           </textarea>
           <div className="m-5 flex justify-center">
