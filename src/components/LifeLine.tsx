@@ -21,7 +21,10 @@ const LifeLine = () => {
   };
 
   return (
-    <div className="relative flex flex-col justify-center rounded-4xl w-[90vw] h-[20vh] bg-gray-300 border border-gray-400 overflow-hidden">
+    <div
+      style={{ background: "var(--lifeline-bg)" }}
+      className="relative flex flex-col justify-center rounded-4xl w-[90vw] h-[20vh] bg-gray-300 border border-gray-400 overflow-hidden"
+    >
       <hr className="absolute top-1/2 left-0 w-full border-t-4 border-gray-500 -translate-y-1/2" />
       {actualItems.map((item, idx) => {
         // La última X va en el centro, las demás a la izquierda con distancia fija
