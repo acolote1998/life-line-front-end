@@ -11,6 +11,7 @@ const useDayById = (id: number) => {
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["days", id],
     queryFn: fetchDayById,
+    retry: 1,
   });
   return { isPending, isError, data, error };
 };
