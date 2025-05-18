@@ -10,7 +10,7 @@ export const Route = createFileRoute("/days/create")({
 });
 
 function RouteComponent() {
-  const { mutate, isSuccess } = useCreateDay();
+  const { mutate, isSuccess, isError } = useCreateDay();
   const [inputTextArea, setInputTextArea] = useState("");
   const [inputScore, setInputScore] = useState("");
   const navigate = useNavigate();
@@ -31,7 +31,10 @@ function RouteComponent() {
       toast.success("Day added successfully");
       navigate({ to: "/" });
     }
-  }, [isSuccess]);
+    if (isError) {
+      toast.error("Error with the server");
+    }
+  }, [isSuccess, isError]);
   return (
     <>
       <div
