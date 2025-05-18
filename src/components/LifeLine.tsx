@@ -1,12 +1,17 @@
 import { useNavigate } from "@tanstack/react-router";
 import LifeLineSphere from "./LifeLineSphere";
 import useDays from "../hooks/useDays";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 const LifeLine = () => {
-  const { data = [] } = useDays();
+  const { isError, data = [] } = useDays();
   const actualItems = [
     ...data,
     { id: undefined, description: "", date: "", score: undefined },
   ];
+  useEffect(() => {
+    if (isError) toast.error("Error with the server");
+  }, [isError]);
 
   const navigate = useNavigate();
   const gapPx = 40;
