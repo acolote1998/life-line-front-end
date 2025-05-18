@@ -58,9 +58,18 @@ function RouteComponent() {
       let totalScores = 0;
       let totalDays = 0;
       if (data) {
-        for (let i = 0; i < data.length; i++) {
-          totalDays++;
-          totalScores += data[i].score;
+        if (data.length > 365) {
+          // Use only the last 365 days
+          for (let i = data.length - 1; i > data.length - 366; i--) {
+            totalScores += data[i].score;
+            totalDays++;
+          }
+        } else {
+          // Use all available days
+          for (let i = 0; i < data.length; i++) {
+            totalScores += data[i].score;
+            totalDays++;
+          }
         }
         return Math.ceil(totalScores / totalDays);
       }
