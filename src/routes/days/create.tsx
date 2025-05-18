@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import Star from "../../components/svg/Star";
 import ActionButton from "../../components/ActionButton";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const Route = createFileRoute("/days/create")({
   component: RouteComponent,
@@ -13,11 +14,11 @@ function RouteComponent() {
   const navigate = useNavigate();
   const handleClick = () => {
     if (inputTextArea === "") {
-      alert("Please write the description of your day");
+      toast.warn("Please write the description of your day");
       return;
     }
     if (!Number(inputScore)) {
-      alert("Please write a valid score");
+      toast.warn("Please write a valid score");
       return;
     }
   };
