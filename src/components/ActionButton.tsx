@@ -11,7 +11,7 @@ const ActionButton = ({
 }: ActionButtonProps) => {
   return (
     <button
-      style={{ backgroundColor: "var(--secondary-backgrounds-text" }}
+      style={{ backgroundColor: "var(--lighter-secondary-backgrounds-text" }}
       className={buttonStyle}
     >
       <h1
