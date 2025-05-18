@@ -81,7 +81,10 @@ function RouteComponent() {
   return (
     <div
       className="flex flex-col items-center self-center justify-center w-[90vw] h-[60vh] p-3 gap-6 border-2 rounded-xl"
-      style={{ backgroundColor: "var(--main-divs" }}
+      style={{
+        backgroundColor: "var(--main-divs",
+        borderColor: "var(--lifeline-border)",
+      }}
     >
       <h1 style={{ color: "var(--main-texts)" }} className="text-2xl">
         Your last adventures
