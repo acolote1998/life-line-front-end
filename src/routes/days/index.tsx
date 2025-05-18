@@ -27,6 +27,19 @@ function RouteComponent() {
       return 0;
     };
     setScoreLastWeek(calculateScoreLw);
+    const calculateScoreLM = (): number => {
+      let totalScores = 0;
+      if (data) {
+        if (data?.length >= 31) {
+          for (let i = data.length - 1; i > data.length - 32; i--) {
+            totalScores += data[i].score;
+          }
+          return Math.ceil(totalScores / 31);
+        }
+      }
+      return 0;
+    };
+    setScoreLastMonth(calculateScoreLM);
   }, [data]);
 
   return (
@@ -59,7 +72,7 @@ function RouteComponent() {
         </div>
         <div className="border-2 rounded-xl p-1 border-green-600 bg-white overflow-scroll">
           <p>Last Month</p>
-          <p>10/10</p>
+          <p>{scoreLastMonth}/10</p>
         </div>
         <div className="border-2 rounded-xl p-1 border-green-600 bg-white overflow-scroll">
           <p>Year to date</p>
