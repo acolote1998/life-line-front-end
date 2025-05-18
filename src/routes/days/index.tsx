@@ -89,16 +89,19 @@ function RouteComponent() {
       <div className="flex self-center justify-center w-[80vw] h-[40vh] border-2 rounded-xl border-green-600 bg-white overflow-scroll">
         <ul>
           {data &&
-            data.map((day) => (
-              <DayListItem
-                date={day.date}
-                description={day.description}
-                id={day.id}
-                readOnly={day.readOnly}
-                score={day.score}
-                key={day.id}
-              />
-            ))}
+            data
+              .slice()
+              .reverse()
+              .map((day) => (
+                <DayListItem
+                  date={day.date}
+                  description={day.description}
+                  id={day.id}
+                  readOnly={day.readOnly}
+                  score={day.score}
+                  key={day.id}
+                />
+              ))}
         </ul>
       </div>
       <div className="flex flex-row gap-5 items-center text-center">
