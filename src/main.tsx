@@ -29,7 +29,7 @@ if (!rootElement.innerHTML) {
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
-        <ToastContainer autoClose={2000} />
+        <ToastContainer autoClose={2500} />
       </QueryClientProvider>
     </StrictMode>
   );
