@@ -40,6 +40,19 @@ function RouteComponent() {
       return 0;
     };
     setScoreLastMonth(calculateScoreLM);
+    const calculateScoreYtd = (): number => {
+      let totalScores = 0;
+      let totalDays = 0;
+      if (data) {
+        for (let i = 0; i < data.length; i++) {
+          totalDays++;
+          totalScores += data[i].score;
+        }
+        return Math.ceil(totalScores / totalDays);
+      }
+      return 0;
+    };
+    setScoreYtd(calculateScoreYtd);
   }, [data]);
 
   return (
@@ -76,7 +89,7 @@ function RouteComponent() {
         </div>
         <div className="border-2 rounded-xl p-1 border-green-600 bg-white overflow-scroll">
           <p>Year to date</p>
-          <p>10/10</p>
+          <p>{scoreYtd}/10</p>
         </div>
       </div>
     </div>
