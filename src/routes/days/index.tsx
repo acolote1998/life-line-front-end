@@ -16,12 +16,19 @@ function RouteComponent() {
   useEffect(() => {
     const calculateScoreLw = (): number => {
       let totalScores = 0;
+      let totalDays = 0;
       if (data) {
         if (data?.length >= 7) {
           for (let i = data.length - 1; i > data.length - 8; i--) {
             totalScores += data[i].score;
           }
           return Math.ceil(totalScores / 7);
+        } else {
+          for (let i = 0; i < data.length; i++) {
+            totalScores += data[i].score;
+            totalDays++;
+          }
+          return Math.ceil(totalScores / totalDays);
         }
       }
       return 0;
