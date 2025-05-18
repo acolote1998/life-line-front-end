@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import useDays from "../../hooks/useDays";
 import DayListItem from "../../components/DayListItem";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/days/")({
   component: RouteComponent,
@@ -8,10 +9,26 @@ export const Route = createFileRoute("/days/")({
 
 function RouteComponent() {
   const { data } = useDays();
+  const [scoreLastWeek, setScoreLastWeek] = useState(0);
+  const [scoreLastMonth, setScoreLastMonth] = useState(0);
+  const [scoreYtd, setScoreYtd] = useState(0);
 
-  const scoreLastWeek = () => {
-    // if(da)
-  };
+  useEffect(() => {
+    const calculateScoreLw = (): number => {
+      let totalScores = 0;
+      if (data) {
+        if (data?.length >= 7) {
+          for (let i = data.length - 1; i > data.length - 8; i--) {
+            totalScores += data[i].score;
+          }
+          return Math.ceil(totalScores / 7);
+        }
+      }
+      return 0;
+    };
+    setScoreLastWeek(calculateScoreLw);
+  }, [data]);
+
   return (
     <div
       className="flex flex-col items-center self-center justify-center w-[90vw] h-[60vh] p-3 gap-6 border-2 rounded-xl"
@@ -36,15 +53,15 @@ function RouteComponent() {
         </ul>
       </div>
       <div className="flex flex-row gap-5 items-center text-center">
-        <div>
+        <div className="border-2 rounded-xl p-1 border-green-600 bg-white overflow-scroll">
           <p>Last Week</p>
-          <p>10/10</p>
+          <p>{scoreLastWeek}/10</p>
         </div>
-        <div>
+        <div className="border-2 rounded-xl p-1 border-green-600 bg-white overflow-scroll">
           <p>Last Month</p>
           <p>10/10</p>
         </div>
-        <div>
+        <div className="border-2 rounded-xl p-1 border-green-600 bg-white overflow-scroll">
           <p>Year to date</p>
           <p>10/10</p>
         </div>
