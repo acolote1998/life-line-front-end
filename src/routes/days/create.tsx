@@ -1,14 +1,16 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import Star from "../../components/svg/Star";
 import ActionButton from "../../components/ActionButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import useCreateDay from "../../hooks/useCreateDay";
 
 export const Route = createFileRoute("/days/create")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const { mutate, isSuccess } = useCreateDay();
   const [inputTextArea, setInputTextArea] = useState("");
   const [inputScore, setInputScore] = useState("");
   const navigate = useNavigate();
@@ -17,11 +19,19 @@ function RouteComponent() {
       toast.warn("Please write the description of your day");
       return;
     }
-    if (!Number(inputScore)) {
+    if (!Number(inputScore) || Number(inputScore) < 1) {
       toast.warn("Please write a valid score");
       return;
     }
+    mutate({ description: inputTextArea, score: Number(inputScore) });
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("Day added successfully");
+      navigate({ to: "/" });
+    }
+  }, [isSuccess]);
   return (
     <>
       <div
