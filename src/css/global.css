@@ -6,6 +6,19 @@ body {
 }
 
 :root {
+  --site-bg: #fff5f0;
+  --lifeline-bg: #fbdccf;
+  --lifeline-border: #f8bfa0;
+  --main-divs: #fde7d6;
+  --secondary-divs: #f9d0af;
+  --main-texts: #8f5a3c;
+  --lighter-secondary-backgrounds: #fff1e6;
+  --secondary-backgrounds-text: #c28f66;
+  --lighter-secondary-backgrounds-text: rgb(255, 248, 234);
+}
+/*Toggle for dark/light mode VVVVV*/
+/* 
+:root {
   --site-bg: #101820;
   --lifeline-bg: #2c3e50;
   --lifeline-border: #4b6584;
@@ -15,4 +28,4 @@ body {
   --lighter-secondary-backgrounds: #2e4053;
   --secondary-backgrounds-text: #d0d3d4;
   --lighter-secondary-backgrounds-text: #b0bec5;
-}
+} */
