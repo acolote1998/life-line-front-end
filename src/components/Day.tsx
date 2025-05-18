@@ -24,10 +24,10 @@ const Day = ({ date, readOnly, description, score }: DayType) => {
           className="m-3 flex flex-col text-center rounded-xl h-[50vh] w-[80vw]"
           style={{ backgroundColor: calculateBgColor() }}
         >
-          <h1 className="m-4">{date}</h1>
+          <h1 className="m-4 text-2xl">{date}</h1>
           <textarea
             readOnly={readOnly}
-            className="bg-white ml-2 mr-2 rounded-xl text-center h-[40vh]"
+            className="bg-white ml-2 mr-2 rounded-xl text-center h-[40vh] text-xl text-gray-700 p-2"
             value={description}
           ></textarea>
           <div className="m-5 flex justify-center">
