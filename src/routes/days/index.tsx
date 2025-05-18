@@ -83,7 +83,7 @@ function RouteComponent() {
       className="flex flex-col items-center self-center justify-center w-[90vw] h-[60vh] p-3 gap-6 border-2 rounded-xl"
       style={{ backgroundColor: "var(--main-divs" }}
     >
-      <h1 className="text-2xl underline underline-offset-7">
+      <h1 style={{ color: "var(--main-texts)" }} className="text-2xl">
         Your last adventures
       </h1>
       <div
