@@ -91,7 +91,7 @@ function RouteComponent() {
       </h1>
       <div
         style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
-        className="flex self-center justify-center w-[80vw] h-[40vh] border-2 rounded-xl bg-white overflow-scroll"
+        className="flex self-center justify-center w-[80vw] h-[40vh] border-2 rounded-xl bg-white overflow-y-scroll"
       >
         <ul>
           {data &&
@@ -113,21 +113,21 @@ function RouteComponent() {
       <div className="flex flex-row gap-5 items-center text-center">
         <div
           style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
-          className="border-2 rounded-xl p-1  bg-white overflow-scroll"
+          className="border-2 rounded-xl p-1  bg-white "
         >
           <p>Last Week</p>
           <p>{scoreLastWeek}/10</p>
         </div>
         <div
           style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
-          className="border-2 rounded-xl p-1 bg-white overflow-scroll"
+          className="border-2 rounded-xl p-1 bg-white"
         >
           <p>Last Month</p>
           <p>{scoreLastMonth}/10</p>
         </div>
         <div
           style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
-          className="border-2 rounded-xl p-1  bg-white overflow-scroll"
+          className="border-2 rounded-xl p-1  bg-white"
         >
           <p>Year to date</p>
           <p>{scoreYtd}/10</p>
