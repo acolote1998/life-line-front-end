@@ -14,6 +14,7 @@ const useDays = () => {
   const { isPending, isError, data, error } = useQuery<DayType[]>({
     queryKey: ["days"],
     queryFn: fetchDays,
+    retry: 1,
   });
   return { isPending, isError, data, error };
 };

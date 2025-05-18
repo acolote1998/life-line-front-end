@@ -2,16 +2,21 @@ import { createFileRoute } from "@tanstack/react-router";
 import useDays from "../../hooks/useDays";
 import DayListItem from "../../components/DayListItem";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export const Route = createFileRoute("/days/")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const { data } = useDays();
+  const { data, isError } = useDays();
   const [scoreLastWeek, setScoreLastWeek] = useState(0);
   const [scoreLastMonth, setScoreLastMonth] = useState(0);
   const [scoreYtd, setScoreYtd] = useState(0);
+
+  useEffect(() => {
+    if (isError) toast.error("Error with the server");
+  }, [isError]);
 
   useEffect(() => {
     const calculateScoreLw = (): number => {
