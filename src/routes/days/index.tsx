@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import useDays from "../../hooks/useDays";
-import type { DayType } from "../../types/DayType";
-import { useEffect, useState } from "react";
 import DayListItem from "../../components/DayListItem";
 
 export const Route = createFileRoute("/days/")({
@@ -9,11 +7,11 @@ export const Route = createFileRoute("/days/")({
 });
 
 function RouteComponent() {
-  const [days, setDays] = useState<DayType[]>([]);
   const { data } = useDays();
-  useEffect(() => {
-    if (data) setDays(data);
-  }, [data]);
+
+  const scoreLastWeek = () => {
+    // if(da)
+  };
   return (
     <div
       className="flex flex-col items-center self-center justify-center w-[90vw] h-[60vh] p-3 gap-6 border-2 rounded-xl"
@@ -24,16 +22,17 @@ function RouteComponent() {
       </h1>
       <div className="flex self-center justify-center w-[80vw] h-[40vh] border-2 rounded-xl border-green-600 bg-white overflow-scroll">
         <ul>
-          {days.map((day) => (
-            <DayListItem
-              date={day.date}
-              description={day.description}
-              id={day.id}
-              readOnly={day.readOnly}
-              score={day.score}
-              key={day.id}
-            />
-          ))}
+          {data &&
+            data.map((day) => (
+              <DayListItem
+                date={day.date}
+                description={day.description}
+                id={day.id}
+                readOnly={day.readOnly}
+                score={day.score}
+                key={day.id}
+              />
+            ))}
         </ul>
       </div>
       <div className="flex flex-row gap-5 items-center text-center">
