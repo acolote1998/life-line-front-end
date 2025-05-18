@@ -5,7 +5,10 @@ const ButtonsContainer = () => {
   return (
     <>
       <div
-        style={{ backgroundColor: "var(--main-divs" }}
+        style={{
+          backgroundColor: "var(--main-divs",
+          borderColor: "var(--lifeline-border)",
+        }}
         className="fixed bottom-0 w-full z-10 flex items-center justify-center pt-3 pb-3 gap-3 border-t-2 border-l-1 border-r-1 rounded-t-xl"
       >
         <div
