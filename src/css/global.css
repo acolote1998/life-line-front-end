@@ -8,6 +8,7 @@ body {
 :root {
   --site-bg: #f7fdfc;
   --lifeline-bg: rgb(214, 214, 214);
+  --lifeline-border: rgb(138, 138, 138);
   --main-divs: #d2f5e3;
   --secondary-divs: #b2e7d2;
   --main-texts: #205e4c;
