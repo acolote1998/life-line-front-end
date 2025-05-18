@@ -86,7 +86,10 @@ function RouteComponent() {
       <h1 className="text-2xl underline underline-offset-7">
         Your last adventures
       </h1>
-      <div className="flex self-center justify-center w-[80vw] h-[40vh] border-2 rounded-xl border-green-600 bg-white overflow-scroll">
+      <div
+        style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
+        className="flex self-center justify-center w-[80vw] h-[40vh] border-2 rounded-xl bg-white overflow-scroll"
+      >
         <ul>
           {data &&
             data
@@ -105,15 +108,24 @@ function RouteComponent() {
         </ul>
       </div>
       <div className="flex flex-row gap-5 items-center text-center">
-        <div className="border-2 rounded-xl p-1 border-green-600 bg-white overflow-scroll">
+        <div
+          style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
+          className="border-2 rounded-xl p-1  bg-white overflow-scroll"
+        >
           <p>Last Week</p>
           <p>{scoreLastWeek}/10</p>
         </div>
-        <div className="border-2 rounded-xl p-1 border-green-600 bg-white overflow-scroll">
+        <div
+          style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
+          className="border-2 rounded-xl p-1 bg-white overflow-scroll"
+        >
           <p>Last Month</p>
           <p>{scoreLastMonth}/10</p>
         </div>
-        <div className="border-2 rounded-xl p-1 border-green-600 bg-white overflow-scroll">
+        <div
+          style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
+          className="border-2 rounded-xl p-1  bg-white overflow-scroll"
+        >
           <p>Year to date</p>
           <p>{scoreYtd}/10</p>
         </div>
