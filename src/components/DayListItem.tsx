@@ -25,10 +25,10 @@ const DayListItem = ({ id, date, score }: DayType) => {
   return (
     <li className="m-1" id={id.toString()} onClick={handleClick}>
       <div className="flex flex-row justify-between align-middle items-center gap-10">
-        <p>{date}</p>
+        <p className="w-[20vw]">{date}</p>
         {calculateSphere()}
         <Star width={20} height={20} />
-        <p>{score} / 10</p>
+        <p className="w-[12vw]">{score} / 10</p>
       </div>
     </li>
   );
