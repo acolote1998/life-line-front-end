@@ -12,7 +12,7 @@ const LifeLine = () => {
   const gapPx = 40;
   const total = actualItems.length;
 
-  const handleClick = (id: number) => {
+  const handleClick = (id: number | undefined) => {
     if (id === undefined) {
       navigate({ to: `/days/create` });
       return;
