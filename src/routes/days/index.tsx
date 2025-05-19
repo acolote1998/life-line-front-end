@@ -3,13 +3,14 @@ import useDays from "../../hooks/useDays";
 import DayListItem from "../../components/DayListItem";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import Loader from "../../components/Loader";
 
 export const Route = createFileRoute("/days/")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const { data, isError } = useDays();
+  const { isPending, data, isError } = useDays();
   const [scoreLastWeek, setScoreLastWeek] = useState(0);
   const [scoreLastMonth, setScoreLastMonth] = useState(0);
   const [scoreYtd, setScoreYtd] = useState(0);
@@ -84,60 +85,63 @@ function RouteComponent() {
   }, [data]);
 
   return (
-    <div
-      className="flex flex-col items-center self-center justify-center w-[90vw] h-[60vh] p-3 gap-6 border-2 rounded-xl"
-      style={{
-        backgroundColor: "var(--main-divs",
-        borderColor: "var(--lifeline-border)",
-      }}
-    >
-      <h1 style={{ color: "var(--main-texts)" }} className="text-2xl">
-        Your last adventures
-      </h1>
+    <>
+      {isPending && <Loader style={{ top: "34.1vh", left: "50vw" }}></Loader>}
       <div
-        style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
-        className="flex self-center justify-center w-[80vw] h-[40vh] border-2 rounded-xl bg-white overflow-y-scroll"
+        className="flex flex-col items-center self-center justify-center w-[90vw] h-[60vh] p-3 gap-6 border-2 rounded-xl"
+        style={{
+          backgroundColor: "var(--main-divs",
+          borderColor: "var(--lifeline-border)",
+        }}
       >
-        <ul>
-          {data &&
-            data
-              .slice()
-              .reverse()
-              .map((day) => (
-                <DayListItem
-                  date={day.date}
-                  description={day.description}
-                  id={day.id}
-                  readOnly={day.readOnly}
-                  score={day.score}
-                  key={day.id}
-                />
-              ))}
-        </ul>
+        <h1 style={{ color: "var(--main-texts)" }} className="text-2xl">
+          Your last adventures
+        </h1>
+        <div
+          style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
+          className="flex self-center justify-center w-[80vw] h-[40vh] border-2 rounded-xl bg-white overflow-y-scroll"
+        >
+          <ul>
+            {data &&
+              data
+                .slice()
+                .reverse()
+                .map((day) => (
+                  <DayListItem
+                    date={day.date}
+                    description={day.description}
+                    id={day.id}
+                    readOnly={day.readOnly}
+                    score={day.score}
+                    key={day.id}
+                  />
+                ))}
+          </ul>
+        </div>
+        <div className="flex flex-row gap-5 items-center text-center">
+          <div
+            style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
+            className="border-2 rounded-xl p-1  bg-white "
+          >
+            <p>Last Week</p>
+            <p>{scoreLastWeek}/10</p>
+          </div>
+          <div
+            style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
+            className="border-2 rounded-xl p-1 bg-white"
+          >
+            <p>Last Month</p>
+            <p>{scoreLastMonth}/10</p>
+          </div>
+          <div
+            style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
+            className="border-2 rounded-xl p-1  bg-white"
+          >
+            <p>Year to date</p>
+            <p>{scoreYtd}/10</p>
+          </div>
+        </div>
       </div>
-      <div className="flex flex-row gap-5 items-center text-center">
-        <div
-          style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
-          className="border-2 rounded-xl p-1  bg-white "
-        >
-          <p>Last Week</p>
-          <p>{scoreLastWeek}/10</p>
-        </div>
-        <div
-          style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
-          className="border-2 rounded-xl p-1 bg-white"
-        >
-          <p>Last Month</p>
-          <p>{scoreLastMonth}/10</p>
-        </div>
-        <div
-          style={{ border: "2px solid var( --secondary-backgrounds-text)" }}
-          className="border-2 rounded-xl p-1  bg-white"
-        >
-          <p>Year to date</p>
-          <p>{scoreYtd}/10</p>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }
