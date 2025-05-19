@@ -34,6 +34,7 @@ function RouteComponent() {
     if (isError) {
       toast.error("Error with the server");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccess, isError]);
   return (
     <>
