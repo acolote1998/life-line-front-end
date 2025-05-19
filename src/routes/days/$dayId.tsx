@@ -4,12 +4,18 @@ import useDayById from "../../hooks/useDayById";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
+import { z } from "zod";
 
 export const Route = createFileRoute("/days/$dayId")({
+  validateSearch: z.object({
+    home: z.boolean().optional(),
+  }),
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const search = Route.useSearch(); // ✅ safely used here
+  const home = search.home;
   const { dayId } = Route.useParams();
   const { isPending, isError, data } = useDayById(Number(dayId));
   useEffect(() => {
@@ -25,6 +31,7 @@ function RouteComponent() {
         id={data?.id}
         score={data?.score}
         key={data?.id}
+        isAtHome={home}
       ></Day>
     </>
   );

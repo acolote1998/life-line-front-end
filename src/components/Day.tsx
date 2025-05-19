@@ -1,7 +1,7 @@
 import type { DayType } from "../types/DayType";
 import Star from "./svg/Star";
 import { useNavigate } from "@tanstack/react-router";
-const Day = ({ date, readOnly, description, score }: DayType) => {
+const Day = ({ date, readOnly, description, score, isAtHome }: DayType) => {
   const navigate = useNavigate();
   const calculateBgColor = () => {
     if (score === 10) return "gold";
@@ -10,7 +10,11 @@ const Day = ({ date, readOnly, description, score }: DayType) => {
     if (score <= 2) return "darkgray";
   };
   function goToDays() {
-    navigate({ to: "/days" });
+    if (isAtHome) {
+      navigate({ to: "/" });
+    } else {
+      navigate({ to: "/days" });
+    }
   }
   return (
     <>

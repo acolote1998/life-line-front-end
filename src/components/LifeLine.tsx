@@ -23,7 +23,7 @@ const LifeLine = () => {
       navigate({ to: `/days/create` });
       return;
     }
-    navigate({ to: `/days/${id}` });
+    navigate({ to: `/days/${id}?home=true` });
   };
 
   return (

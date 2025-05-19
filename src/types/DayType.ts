@@ -4,4 +4,5 @@ export type DayType = {
   description: string;
   score: number;
   date: string;
+  isAtHome?: boolean;
 };
