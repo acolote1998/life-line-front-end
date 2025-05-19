@@ -86,7 +86,7 @@ function RouteComponent() {
 
   return (
     <>
-      {isPending && <Loader style={{ top: "34.1vh", left: "50vw" }}></Loader>}
+      {isPending && <Loader style={{ top: "48.1vh", left: "50vw" }}></Loader>}
       <div
         className="flex flex-col items-center self-center justify-center w-[90vw] h-[60vh] p-3 gap-6 border-2 rounded-xl"
         style={{
