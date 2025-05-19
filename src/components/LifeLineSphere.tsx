@@ -13,8 +13,8 @@ const LifeLineSphere = ({
 }: LifeLineSphereType) => {
   const calculateSphere = () => {
     if (score) {
-      if (score === 10) return <GoldenSphere width={24} height={24} />;
-      if (score > 5) return <GreenSphere width={24} height={24} />;
+      if (score > 6) return <GreenSphere width={24} height={24} />;
+      if (score > 4) return <GoldenSphere width={24} height={24} />;
       if (score > 2) return <RedSphere width={24} height={24} />;
       if (score <= 2) return <DarkSphere width={24} height={24} />;
     } else {

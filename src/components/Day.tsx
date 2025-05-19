@@ -4,8 +4,8 @@ import { useNavigate } from "@tanstack/react-router";
 const Day = ({ date, readOnly, description, score, isAtHome }: DayType) => {
   const navigate = useNavigate();
   const calculateBgColor = () => {
-    if (score === 10) return "gold";
-    if (score > 5) return "lightGreen";
+    if (score > 6) return "lightGreen";
+    if (score > 4) return "yellow";
     if (score > 2) return "coral";
     if (score <= 2) return "darkgray";
   };
