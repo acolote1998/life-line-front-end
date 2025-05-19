@@ -28,7 +28,7 @@ const LifeLine = () => {
 
   return (
     <>
-      {isPending && <Loader></Loader>}
+      {isPending && <Loader style={{ top: "54.1vh", left: "50vw" }}></Loader>}
       <div
         style={{
           background: "var(--lifeline-bg)",
