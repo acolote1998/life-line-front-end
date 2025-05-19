@@ -6,14 +6,14 @@ body {
 }
 
 .loader {
-  width: 40px;
+  width: 48px;
   aspect-ratio: 1;
   border-radius: 50%;
   background:
-    radial-gradient(farthest-side, #ed303c 94%, #0000),
-    radial-gradient(farthest-side, #3b8183 94%, #0000),
-    radial-gradient(farthest-side, #fad089 94%, #0000),
-    radial-gradient(farthest-side, #ff9c5b 94%, #0000), #ed303c;
+    radial-gradient(farthest-side, #00ff15 94%, #0000),
+    radial-gradient(farthest-side, #ff6767 94%, #0000),
+    radial-gradient(farthest-side, #ffe600 94%, #0000),
+    radial-gradient(farthest-side, #251002 94%, #0000), #ed303c;
   background-size: 105% 105%;
   background-repeat: no-repeat;
   animation: l5 2s infinite;

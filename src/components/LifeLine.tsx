@@ -3,8 +3,9 @@ import LifeLineSphere from "./LifeLineSphere";
 import useDays from "../hooks/useDays";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import Loader from "./Loader";
 const LifeLine = () => {
-  const { isError, data = [] } = useDays();
+  const { isPending, isError, data = [] } = useDays();
   const actualItems = [
     ...data,
     { id: undefined, description: "", date: "", score: undefined },
@@ -26,31 +27,34 @@ const LifeLine = () => {
   };
 
   return (
-    <div
-      style={{
-        background: "var(--lifeline-bg)",
-        border: "1px solid var(--lifeline-border)",
-      }}
-      className="relative flex flex-col justify-center rounded-4xl w-[90vw] h-[20vh] overflow-hidden"
-    >
-      <hr className="absolute top-1/2 left-0 w-full border-t-4 border-gray-500 -translate-y-1/2" />
-      {actualItems.map((item, idx) => {
-        // La última X va en el centro, las demás a la izquierda con distancia fija
-        const offset = (total - 1 - idx) * gapPx;
-        return (
-          <div key={idx} onClick={() => handleClick(item.id)}>
-            <LifeLineSphere
-              score={item.score}
-              className="absolute top-1/2 px-4 py-1"
-              style={{
-                left: `calc(50% - ${offset}px)`,
-                transform: "translate(-50%, -50%)",
-              }}
-            />
-          </div>
-        );
-      })}
-    </div>
+    <>
+      {isPending && <Loader></Loader>}
+      <div
+        style={{
+          background: "var(--lifeline-bg)",
+          border: "1px solid var(--lifeline-border)",
+        }}
+        className="relative flex flex-col justify-center rounded-4xl w-[90vw] h-[20vh] overflow-hidden"
+      >
+        <hr className="absolute top-1/2 left-0 w-full border-t-4 border-gray-500 -translate-y-1/2" />
+        {actualItems.map((item, idx) => {
+          // La última X va en el centro, las demás a la izquierda con distancia fija
+          const offset = (total - 1 - idx) * gapPx;
+          return (
+            <div key={idx} onClick={() => handleClick(item.id)}>
+              <LifeLineSphere
+                score={item.score}
+                className="absolute top-1/2 px-4 py-1"
+                style={{
+                  left: `calc(50% - ${offset}px)`,
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
