@@ -17,10 +17,7 @@ const ActionButton = ({
       }}
       className={buttonStyle}
     >
-      <h1
-        style={{ color: "var(--lighter-secondary-backgrounds)" }}
-        className={textSize}
-      >
+      <h1 style={{ color: "var(--main-texts)" }} className={textSize}>
         {description}
       </h1>
     </button>
