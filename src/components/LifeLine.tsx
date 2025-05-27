@@ -48,7 +48,15 @@ const LifeLine = () => {
         </SignInButton>
       </SignedOut>
       <SignedIn>
-        <SignOutButton />
+        <SignOutButton mode="modal" asChild>
+          <a className="absolute top-0 right-0">
+            <ActionButton
+              textSize="text-sm"
+              buttonStyle="border-1 rounded-2xl pt-2.5 pb-2.5 pl-7 pr-7"
+              description={"Sign Out"}
+            ></ActionButton>
+          </a>
+        </SignOutButton>
         {isPending && <Loader style={{ top: "54.1vh", left: "50vw" }}></Loader>}
         <div
           style={{
