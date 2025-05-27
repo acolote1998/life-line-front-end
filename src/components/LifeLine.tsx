@@ -38,7 +38,7 @@ const LifeLine = () => {
     <>
       <SignedOut>
         <SignInButton mode="modal" asChild>
-          <a>
+          <a className="absolute top-0 right-0">
             <ActionButton
               textSize="text-2xl"
               buttonStyle="border-1 rounded-2xl pt-2.5 pb-2.5 pl-7 pr-7"
