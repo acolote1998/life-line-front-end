@@ -5,7 +5,7 @@ import serverRoot from "./serverRoot";
 import { useAuth } from "@clerk/clerk-react";
 
 const useDays = () => {
-  const { getToken } = useAuth();
+  const { getToken, isSignedIn } = useAuth();
   async function fetchDays(): Promise<DayType[]> {
     const response = await axios.get(serverRoot + "/byUser", {
       headers: { Authorization: `Bearer ${await getToken()}` },
@@ -18,7 +18,8 @@ const useDays = () => {
   const { isPending, isError, data, error } = useQuery<DayType[]>({
     queryKey: ["days"],
     queryFn: fetchDays,
-    retry: 300,
+    enabled: isSignedIn === true,
+    retry: 4,
   });
   return { isPending, isError, data, error };
 };
