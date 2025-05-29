@@ -1,3 +1,5 @@
+import { useAuth } from "@clerk/clerk-react";
+import { toast } from "react-toastify";
 type ActionButtonProps = {
   description: string;
   buttonStyle?: string;
@@ -9,6 +11,12 @@ const ActionButton = ({
   buttonStyle,
   textSize,
 }: ActionButtonProps) => {
+  const { isSignedIn } = useAuth();
+  const handleOnClick = () => {
+    if (isSignedIn !== true) {
+      toast.warning("Please sign in");
+    }
+  };
   return (
     <button
       style={{
@@ -16,6 +24,7 @@ const ActionButton = ({
         border: "2px solid var(--lifeline-border)",
       }}
       className={buttonStyle}
+      onClick={handleOnClick}
     >
       <h1 style={{ color: "var(--main-texts)" }} className={textSize}>
         {description}
