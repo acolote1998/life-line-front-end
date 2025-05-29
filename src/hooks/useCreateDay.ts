@@ -9,7 +9,9 @@ const useCreateDay = () => {
   const mutation = useMutation({
     mutationFn: async (day: DayToCreateType) => {
       return axios.post(serverRoot, day, {
-        headers: { Authorization: `Bearer ${await getToken()}` },
+        headers: {
+          Authorization: `Bearer ${await getToken({ template: "UserName" })}`,
+        },
       });
     },
   });
