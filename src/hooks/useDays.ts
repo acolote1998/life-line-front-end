@@ -2,10 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import axios, { HttpStatusCode } from "axios";
 import type { DayType } from "../types/DayType";
 import serverRoot from "./serverRoot";
+import { useAuth } from "@clerk/clerk-react";
 
 const useDays = () => {
+  const { getToken } = useAuth();
   async function fetchDays(): Promise<DayType[]> {
-    const response = await axios.get(serverRoot);
+    const response = await axios.get(serverRoot + "/byUser", {
+      headers: { Authorization: `Bearer ${await getToken()}` },
+    });
     if (response.status === HttpStatusCode.Ok) {
       return response.data;
     }
