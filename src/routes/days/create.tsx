@@ -5,26 +5,29 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useCreateDay from "../../hooks/useCreateDay";
 import Loader from "../../components/Loader";
-
+import { useAuth } from "@clerk/clerk-react";
 export const Route = createFileRoute("/days/create")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const { isSignedIn } = useAuth();
   const { isPending, mutate, isSuccess, isError } = useCreateDay();
   const [inputTextArea, setInputTextArea] = useState("");
   const [inputScore, setInputScore] = useState("");
   const navigate = useNavigate();
   const handleClick = () => {
-    if (inputTextArea === "") {
-      toast.warn("Please write the description of your day");
-      return;
+    if (isSignedIn === true) {
+      if (inputTextArea === "") {
+        toast.warn("Please write the description of your day");
+        return;
+      }
+      if (!Number(inputScore) || Number(inputScore) < 1) {
+        toast.warn("Please write a valid score");
+        return;
+      }
+      mutate({ description: inputTextArea, score: Number(inputScore) });
     }
-    if (!Number(inputScore) || Number(inputScore) < 1) {
-      toast.warn("Please write a valid score");
-      return;
-    }
-    mutate({ description: inputTextArea, score: Number(inputScore) });
   };
 
   useEffect(() => {

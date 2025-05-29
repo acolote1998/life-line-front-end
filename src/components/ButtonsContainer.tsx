@@ -1,7 +1,9 @@
 import { useNavigate } from "@tanstack/react-router";
 import ActionButton from "./ActionButton";
+import { useAuth } from "@clerk/clerk-react";
 const ButtonsContainer = () => {
   const navigate = useNavigate();
+  const { isSignedIn } = useAuth();
   return (
     <>
       <div
@@ -13,7 +15,9 @@ const ButtonsContainer = () => {
       >
         <div
           onClick={() => {
-            navigate({ to: "/days" });
+            if (isSignedIn) {
+              navigate({ to: "/days" });
+            }
           }}
         >
           <ActionButton
@@ -35,7 +39,9 @@ const ButtonsContainer = () => {
         </div>
         <div
           onClick={() => {
-            navigate({ to: "/days/create" });
+            if (isSignedIn) {
+              navigate({ to: "/days/create" });
+            }
           }}
         >
           <ActionButton
