@@ -1,54 +1,24 @@
-# React + TypeScript + Vite
+# Life Line – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+_A simple way to reflect on your days and see the bigger picture of your life._
 
-Currently, two official plugins are available:
+**Life Line** is a personal journaling and well-being tracker. Each day, users can log a short description of what happened and give the day a **score from 1 to 10**. These daily entries are saved and displayed as part of the user’s **lifeline** — a timeline that visually represents their journey over time.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The frontend, built with **React and TypeScript**, provides the interactive interface that makes it possible for users to:
 
-## Expanding the ESLint configuration
+- **Create daily entries** – Write a short description and rate the day from 1 (bad) to 10 (excellent).
+- **Explore the lifeline** – View all past days as dots along a horizontal timeline.
+- **Color-coded insights** – Each day is represented with an automatic color based on its score:
+  - 🟢 Green for good days
+  - 🟡 Yellow for average days
+  - 🔴 Red for bad days
+- **Track progress at a glance** – See average scores calculated for:
+  - The last 7 days
+  - The last 30 days
+  - Year-to-date
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The project is designed to help users **reflect on their lives, identify patterns, and celebrate progress**. By turning daily reflections into a simple visual journey, _Life Line_ makes personal growth and self-awareness both accessible and meaningful.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+This repository contains the **frontend component** of the application, which delivers the user experience and connects seamlessly with the backend.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Backend repository: https://github.com/acolote1998/life-line-back-end
